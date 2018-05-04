@@ -1,0 +1,37 @@
+#!/bin/bash
+
+numtests=3
+#	command to execute test:
+command="./exe t\$i.in >& t\$i.res"
+
+rm *.res
+
+
+make
+if [[ $? != 0 ]] 
+	then
+		echo "Cannot build!"
+		exit
+fi
+if [ ! -f exe ]
+	then
+		echo "Cannot build submission!"
+		exit
+fi
+
+i="1"
+while [ $i -le $numtests ]
+	do
+		eval $command
+		diff t$i.res t$i.out &> /dev/null
+		if [[ $? != 0 ]] 
+			then
+				echo "Failed test #"$i"!"
+				exit
+		fi
+		i=$[$i+1]
+done
+
+
+echo "Ok"
+exit
