@@ -4,7 +4,7 @@ numtests=3
 #	command to execute test:
 command="./exe t\$i.in >& t\$i.res"
 
-rm *.res
+rm -f *.res
 
 
 make
