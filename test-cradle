@@ -15,7 +15,7 @@ if [[ $? != 0 ]]
 fi
 if [ ! -f exe ]
 	then
-		echo "Cannot build submission!"
+		echo "Cannot build!"
 		exit
 fi
 
